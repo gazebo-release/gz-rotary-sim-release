@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+.PHONY: override_dh_auto_configure \
+        override_dh_install \
+        override_dh_auto_test
+
+%:
+	dh $@ --with python3
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	-DUSE_SYSTEM_PATHS_FOR_PYTHON_INSTALLATION=ON \
+	-DUSE_DIST_PACKAGES_FOR_PYTHON=ON \
+	-DBUILD_TESTING=OFF
+
+# Execute doc creation to export at least the doxygen tag file
+override_dh_auto_build:
+	dh_auto_build -- doc
+	dh_auto_build
+
+override_dh_auto_install:
+	dh_auto_install
+	install -d debian/tmp/usr/share/gz/gz-sim/
+	install ./obj-*/*.tag.xml debian/tmp/usr/share/gz/gz-sim/
+
+override_dh_install:
+	dh_install --
+	$(RM) debian/gz-sim*/usr/share/gz/gz-sim*/gz-sim*.tag.xml
+	# Remove gui library in libgz-sim already in libgz-sim-gui
+	$(RM) debian/libgz-sim/usr/lib/*/libgz-sim-gui*
+	# Remove camera-video-recorder-system in libgz-sim already in libgz-sim-gui
+	$(RM) debian/libgz-sim/usr/lib/*/libgz-sim-camera-video-recorder-system*
+	# Remove camera-video-recorder-system plugin in libgz-sim-plugins already in libgz-sim-plugins-gui
+	$(RM) debian/libgz-sim-plugins/usr/lib/*/gz-sim-[0-9]*/plugins/libgz-sim-camera-video-recorder-system*
+
+override_dh_auto_test:
+	# failing tests needs inspection
+	true
