@@ -33,7 +33,7 @@ override_dh_install:
 	# Remove camera-video-recorder-system in libgz-sim already in libgz-sim-gui
 	$(RM) debian/libgz-sim/usr/lib/*/libgz-sim-camera-video-recorder-system*
 	# Remove camera-video-recorder-system plugin in libgz-sim-plugins already in libgz-sim-plugins-gui
-	$(RM) debian/libgz-sim-plugins/usr/lib/*/gz-sim-[0-9]*/plugins/libgz-sim-camera-video-recorder-system*
+	$(RM) debian/libgz-sim-plugins/usr/lib/*/gz-sim/plugins/libgz-sim-camera-video-recorder-system*
 
 override_dh_auto_test:
 	# failing tests needs inspection

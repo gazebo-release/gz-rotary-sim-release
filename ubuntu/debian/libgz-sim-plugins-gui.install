@@ -1,2 +1,2 @@
-usr/lib/*/gz-sim-[0-99]*/plugins/gui/*
-usr/lib/*/gz-sim-[0-99]*/plugins/libgz-sim-camera-video-recorder-system.so*
+usr/lib/*/gz-sim/plugins/gui/*
+usr/lib/*/gz-sim/plugins/libgz-sim-camera-video-recorder-system.so*
