@@ -209,7 +209,7 @@ Description: Gazebo Sim classes and functions for robot apps - Development files
  .
  The package contains the Python3 bindings.
 
-Package: gz-rotary-sim
+Package: libgz-rotary-sim-dev
 Depends: libgz-sim-dev (= ${binary:Version}), ${misc:Depends}
 Architecture: all
 Priority: optional
@@ -225,15 +225,7 @@ Section: metapackages
 Description: alias package
  Provides a package for Rotary without exposing the version number.
 
-Package: gz-rotary-sim-plugins
-Depends: libgz-sim-plugins (= ${binary:Version}), ${misc:Depends}
-Architecture: all
-Priority: optional
-Section: metapackages
-Description: alias package
- Provides a package for Rotary without exposing the version number.
-
-Package: gz-rotary-sim-python
+Package: python3-gz-rotary-sim
 Depends: python3-gz-sim (= ${binary:Version}), ${misc:Depends}
 Architecture: all
 Priority: optional
