@@ -225,6 +225,14 @@ Section: metapackages
 Description: alias package
  Provides a package for Rotary without exposing the version number.
 
+Package: gz-rotary-sim-server
+Depends: gz-sim-server (= ${binary:Version}), ${misc:Depends}
+Architecture: all
+Priority: optional
+Section: metapackages
+Description: alias package
+ Provides a package for Rotary without exposing the version number.
+
 Package: python3-gz-rotary-sim
 Depends: python3-gz-sim (= ${binary:Version}), ${misc:Depends}
 Architecture: all
